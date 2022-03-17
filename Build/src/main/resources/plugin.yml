@@ -1,0 +1,18 @@
+name: "PlotGUI"
+version: "1.0.0"
+main: "vb.$plotgui.PluginMain"
+api-version: 1.13
+authors: [JuniorBlack2000]
+website: "https://rdg.webador.de/"
+commands:
+  .rdg:
+  pgui:
+    permission: "plot.gui"
+    permission-message: "§cDu darfst das nicht!!!"
+  pgui-flag:
+    permission: "plot.gui"
+    permission-message: "§cDu darfst das nicht!!!"
+  pgui-reload:
+    permission: "admin.pgui.reload"
+    permission-message: "Du darfst das nicht!"
+permissions:
