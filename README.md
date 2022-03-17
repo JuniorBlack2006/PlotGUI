@@ -1,5 +1,6 @@
 # PlotGUI / Version 1.0.0
-  Minecraft - 1.13 - 1.18
+
+Minecraft: 1.13 - 1.18 (PaperMC, spigot, bukkit)
 
 A simple GUI system for PlotSquared to managing the plot
 
