@@ -1,5 +1,5 @@
 # PlotGUI / Version 1.0.0
-# Minecraft - 1.13 - 1.18
+  Minecraft - 1.13 - 1.18
 
 Commands: 
   /pgui - open GUI
