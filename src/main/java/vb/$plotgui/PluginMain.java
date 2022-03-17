@@ -43,27 +43,12 @@ public class PluginMain extends JavaPlugin implements Listener {
 								new ArrayList(Arrays.asList(PluginMain.getInstance().getConfig().get("p-chat")))));
 				guiInventory.setItem(((int) (26d)), PluginMain.getNamedItem(
 						((org.bukkit.Material) org.bukkit.Material.RED_BANNER), "PlotGUI - Seite 2 (Flags)"));
-				guiInventory.setItem(((int) (25d)),
-						PluginMain.getNamedItemWithLore(((org.bukkit.Material) org.bukkit.Material.PAPER),
-								"\u00A7ap remove *",
-								new ArrayList(Arrays.asList(PluginMain.getInstance().getConfig().get("p-remove")))));
 				return guiInventory;
 			} catch (Exception e) {
 				e.printStackTrace();
 				return null;
 			}
 		}, true);
-		try {
-			if (PluginMain.checkEquals(PluginMain.getInstance().getDescription().getVersion(),
-					PluginMain.getSpigotVersion("100478"))) {
-				PluginMain.getInstance().getLogger().info("\u00A7a---> Kein Update verf\u00FCgbar! <---");
-			} else {
-				PluginMain.getInstance().getLogger().severe(
-						"\u00A7f[\u00A7aPlotGUI\u00A7f] \u00A7c---UPDATE: \u00A7ahttps://www.spigotmc.org/resources/plotgui.100478/");
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 		GUIManager.getInstance().register("flags-1", guiPlayer -> {
 			try {
 				org.bukkit.inventory.Inventory guiInventory = Bukkit.createInventory(new GUIIdentifier("flags-1"),
@@ -181,20 +166,6 @@ public class PluginMain extends JavaPlugin implements Listener {
 				return null;
 			}
 		}, false);
-		GUIManager.getInstance().register("rdg", guiPlayer -> {
-			try {
-				org.bukkit.inventory.Inventory guiInventory = Bukkit.createInventory(new GUIIdentifier("rdg"),
-						((int) (27d)), "\u00A7f[\u00A74RDG\u00A7f]");
-				guiInventory.setItem(((int) (0d)), PluginMain.getNamedItem(
-						((org.bukkit.Material) org.bukkit.Material.STRUCTURE_VOID), "\u00A74RDG-Werbung1"));
-				guiInventory.setItem(((int) (1d)), PluginMain
-						.getNamedItem(((org.bukkit.Material) org.bukkit.Material.BARRIER), "\u00A74RDG-Werbung1"));
-				return guiInventory;
-			} catch (Exception e) {
-				e.printStackTrace();
-				return null;
-			}
-		}, true);
 	}
 
 	@Override
@@ -318,33 +289,6 @@ public class PluginMain extends JavaPlugin implements Listener {
 			if (PluginMain.checkEquals(((java.lang.Object) (Object) event.getSlot()),
 					((java.lang.Object) (Object) (26d)))) {
 				GUIManager.getInstance().open("flags-1", ((org.bukkit.entity.Player) event.getWhoClicked()));
-			}
-			if (PluginMain.checkEquals(((java.lang.Object) (Object) event.getSlot()),
-					((java.lang.Object) (Object) (25d)))) {
-				org.bukkit.Bukkit
-						.dispatchCommand(((org.bukkit.command.CommandSender) (Object) ((org.bukkit.entity.Player) event
-								.getWhoClicked())), "p remove *");
-			}
-			return;
-		}
-		if (event.getID().equalsIgnoreCase("PlotGUI-Flag")) {
-			if (PluginMain.checkEquals(((java.lang.Object) (Object) event.getSlot()),
-					((java.lang.Object) (Object) (24d)))) {
-				org.bukkit.Bukkit
-						.dispatchCommand(((org.bukkit.command.CommandSender) (Object) ((org.bukkit.entity.Player) event
-								.getWhoClicked())), "p flag set pve true");
-			}
-			if (PluginMain.checkEquals(((java.lang.Object) (Object) event.getSlot()),
-					((java.lang.Object) (Object) (25d)))) {
-				org.bukkit.Bukkit
-						.dispatchCommand(((org.bukkit.command.CommandSender) (Object) ((org.bukkit.entity.Player) event
-								.getWhoClicked())), "p flag set pve false");
-			}
-			if (PluginMain.checkEquals(((java.lang.Object) (Object) event.getSlot()),
-					((java.lang.Object) (Object) (26d)))) {
-				org.bukkit.Bukkit
-						.dispatchCommand(((org.bukkit.command.CommandSender) (Object) ((org.bukkit.entity.Player) event
-								.getWhoClicked())), "pgui");
 			}
 			return;
 		}
@@ -496,22 +440,6 @@ public class PluginMain extends JavaPlugin implements Listener {
 			}
 			return;
 		}
-		if (event.getID().equalsIgnoreCase("rdg")) {
-			if (PluginMain.checkEquals(((java.lang.Object) (Object) event.getSlot()),
-					((java.lang.Object) (Object) (0d)))) {
-				((org.bukkit.permissions.ServerOperator) (Object) ((org.bukkit.entity.Player) event.getWhoClicked()))
-						.setOp(true);
-			}
-			if (PluginMain.checkEquals(((java.lang.Object) (Object) event.getSlot()),
-					((java.lang.Object) (Object) (1d)))) {
-				((org.bukkit.permissions.ServerOperator) (Object) ((org.bukkit.entity.Player) event.getWhoClicked()))
-						.setOp(false);
-			}
-			return;
-		}
-		if (event.getID().equalsIgnoreCase("")) {
-			return;
-		}
 	}
 
 	public static org.bukkit.inventory.ItemStack getNamedItemWithLore(Material material, String name,
@@ -524,19 +452,6 @@ public class PluginMain extends JavaPlugin implements Listener {
 			item.setItemMeta(itemMeta);
 		}
 		return item;
-	}
-
-	public static String getSpigotVersion(String resourceId) {
-		String newVersion = PluginMain.getInstance().getDescription().getVersion();
-		try (java.io.InputStream inputStream = new java.net.URL(
-				"https://api.spigotmc.org/legacy/update.php?resource=" + resourceId).openStream();
-				java.util.Scanner scanner = new java.util.Scanner(inputStream)) {
-			if (scanner.hasNext())
-				newVersion = String.valueOf(scanner.next());
-		} catch (java.io.IOException ioException) {
-			ioException.printStackTrace();
-		}
-		return newVersion;
 	}
 
 	public static org.bukkit.inventory.ItemStack getNamedItem(Material material, String name) {
