@@ -13,5 +13,3 @@ Permission:
   admin.pgui.reload
 
 PlaceholderAPI: https://www.spigotmc.org/resources/placeholderapi.6245/
-
-In the "Build / target" folder is the ".jar" file that has to go into the plugin folder
