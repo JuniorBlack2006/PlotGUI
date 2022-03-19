@@ -4,7 +4,7 @@ Minecraft: 1.13 - 1.18 (PaperMC, spigot, bukkit)
 
 A simple GUI system for PlotSquared to managing the plot
 
-Commands: 
+Commands:
   /pgui - open GUI
   /pgui-reload - reload config.yml
   
